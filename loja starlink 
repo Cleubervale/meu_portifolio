@@ -1,0 +1,61 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart, Satellite } from "lucide-react";
+
+const products = [
+  {
+    id: 1,
+    name: "Starlink Kit Residencial",
+    price: "R$ 2.500,00",
+    description: "Internet via satélite de alta velocidade, ideal para áreas remotas.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Starlink_Dishy.jpg/640px-Starlink_Dishy.jpg",
+  },
+  {
+    id: 2,
+    name: "Plano Mensal Starlink",
+    price: "R$ 530,00",
+    description: "Assinatura mensal para acesso à internet Starlink.",
+    image: "https://www.starlink.com/assets/images/starlink-kit-mobile.png",
+  },
+  {
+    id: 3,
+    name: "Roteador Wi-Fi Mesh",
+    price: "R$ 450,00",
+    description: "Expanda o sinal Wi-Fi da Starlink com roteador mesh de alta performance.",
+    image: "https://m.media-amazon.com/images/I/61sgeBzr3uL._AC_SL1500_.jpg",
+  },
+];
+
+export default function LojaStarlink() {
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl font-bold text-gray-800 flex justify-center items-center gap-2">
+          <Satellite className="text-blue-500" /> Loja Starlink
+        </h1>
+        <p className="text-gray-600 mt-2">Produtos e planos de internet via satélite</p>
+      </header>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <Card key={product.id} className="rounded-2xl shadow-md hover:shadow-xl transition">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="rounded-t-2xl w-full h-48 object-cover"
+            />
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold text-gray-800">{product.name}</h2>
+              <p className="text-gray-600 text-sm mb-2">{product.description}</p>
+              <p className="text-lg font-bold text-blue-600 mb-4">{product.price}</p>
+              <Button className="w-full flex items-center justify-center gap-2">
+                <ShoppingCart /> Comprar
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
